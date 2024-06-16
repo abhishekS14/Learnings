@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
 export default function Converter() {
-    const [text, setText] = useState("Enter text here");
+    const [text, setText] = useState("");
     const [count, setCount] = useState(0);
     const [showCount, setShowCount] = useState(true);
 
@@ -11,6 +11,10 @@ export default function Converter() {
 
     const handleLoClick = () => {
         setText(text.toLowerCase());
+    }
+
+    const handleClearClick = () => {
+        setText("");
     }
 
     const handleCountClick = () => {
@@ -33,11 +37,12 @@ export default function Converter() {
         <>
             <div>
                 <div className="mb-3">
-                    <textarea className="form-control" rows="6" value={text} onChange={handleChange}></textarea>
+                    <textarea className="form-control" rows="6" value={text} onChange={handleChange} placeholder="Enter text here"></textarea>
                 </div >
-                <button type="button" className="btn btn-primary my-3 mx-3" onClick={handleUpClick} >Convert to Uppercase</button>
-                <button type="button" className="btn btn-primary my-3 mx-3" onClick={handleLoClick} >Convert to Lowercase</button>
-                <button type="button" className="btn btn-primary my-3 mx-3" onClick={handleCountClick} >Word Count</button>
+                <button type="button" className="btn btn-primary my-3 mx-1" onClick={handleUpClick} >Convert to Uppercase</button>
+                <button type="button" className="btn btn-primary my-3 mx-1" onClick={handleLoClick} >Convert to Lowercase</button>
+                <button type="button" className="btn btn-primary my-3 mx-1" onClick={handleCountClick} >Word Count</button>
+                <button type="button" className="btn btn-primary my-3 mx-1" onClick={handleClearClick} >Clear</button>
             </div>
             <div className="mb-3 my-3 mx-3">
                 <h3 hidden={showCount}>{count}</h3>
